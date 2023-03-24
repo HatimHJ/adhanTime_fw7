@@ -62,7 +62,6 @@ input {
 .panel {
 	max-width: 70%;
 	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-	border-radius: 0 10px 10px 0;
 }
 
 /* search page */
