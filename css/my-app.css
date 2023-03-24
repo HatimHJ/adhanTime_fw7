@@ -1,0 +1,114 @@
+/* Base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+img {
+	width: 100%;
+	display: block;
+}
+input {
+	height: 100%;
+	border: none;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+/* Reusable classes */
+.sr-only {
+	position: absolute;
+	top: -10rem;
+	left: -10rem;
+	width: 0;
+	height: 0;
+}
+.flex-end {
+	display: flex;
+	justify-content: end;
+}
+.text-right {
+	text-align: right;
+}
+.px-1 {
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+}
+.py-2 {
+	padding-block: 1rem;
+}
+.mb-2 {
+	margin-bottom: 1rem;
+}
+.d-flex {
+	display: flex;
+}
+.content-between {
+	justify-content: space-between;
+}
+.items-center {
+	align-items: center;
+}
+.items-stretch {
+	align-items: stretch;
+}
+.bg {
+	background: url(../img/bg.png), rgba(0, 0, 0, 0.5);
+	background-size: cover;
+	background-blend-mode: soft-light;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+/* main components */
+.panel {
+	max-width: 70%;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	border-radius: 0 10px 10px 0;
+}
+
+/* search page */
+.serach-form {
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.ri-search-eye-line.ri-lg {
+	line-height: normal;
+	vertical-align: sub;
+}
+.city-date,
+.serach-form {
+	margin-top: 2rem;
+}
+/* result */
+.city-date,
+.result {
+	background: #2d3436;
+	color: #f0f0f0;
+	font-weight: bold;
+	font-size: 1.2rem;
+	padding-block: 1rem;
+}
+.city-date {
+	background-color: #343c3e;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: normal;
+	font-size: 1rem;
+	padding: 1rem;
+}
+.city {
+	flex: 2;
+}
+.date {
+	flex: 1;
+	text-align: right;
+}
+.times {
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 1rem 1rem;
+}
+.times:last-child {
+	margin-bottom: 0rem;
+}
+/* ============== */

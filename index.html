@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"
+		/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<title>My App</title>
+		<!-- Path to Framework7 Library CSS-->
+		<link rel="stylesheet" href="css/framework7.ios.min.css" />
+		<link rel="stylesheet" href="css/framework7.ios.colors.min.css" />
+		<!-- material colorCSS-->
+		<link rel="stylesheet" href="css/framework7.material.min.css" />
+		<link rel="stylesheet" href="css/framework7.material.colors.min.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+			rel="stylesheet"
+		/>
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet" href="css/my-app.css" />
+		<link rel="stylesheet" href="css/autocomplete.css" />
+	</head>
+	<body>
+		<div class="statusbar-overlay"></div>
+		<div class="panel-overlay"></div>
+
+		<div class="panel panel-left panel-cover bg-lightblue">
+			<div class="content-block">
+				<div class="list-block">
+					<ul>
+						<li class="custom-panel-item">
+							<div class="item-inner">
+								<div class="item-title">
+									<a href="about.html" class="item-link close-panel">about</a>
+								</div>
+							</div>
+						</li>
+						<li class="custom-panel-item">
+							<div class="item-inner">
+								<div class="item-title">
+									<a href="index.html" class="item-link close-panel">home</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="views">
+			<div class="view view-main">
+				<!-- Top Navbar-->
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">pryer times</div>
+						<div class="right">
+							<a href="#" class="link icon-only open-panel">
+								<span class="sr-only">close</span>
+								<i class="icon icon-bars"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- Bottom Toolbar-->
+				<!-- Inner Page-->
+				<div class="pages navbar-through toolbar-through">
+					<div class="page" data-page="index">
+						<div class="page-content bg">
+							<div class="d-flex serach-form">
+								<div class="form-inner d-flex">
+									<div class="autocomplete item-input">
+										<input
+											id="search-input"
+											type="text"
+											name="city"
+											placeholder="Country"
+										/>
+									</div>
+									<a
+										href="#"
+										id="search-btn"
+										class="button button-fill bg-gray"
+									>
+										<i class="ri-search-eye-line ri-lg ri-fw"></i>
+									</a>
+								</div>
+							</div>
+							<div class="city-date d-flex">
+								<span class="city">N/A</span>
+								<span class="date">N/A</span>
+							</div>
+							<div class="result">
+								<div class="times fajr d-flex">
+									<div class="text">Fajr</div>
+									<div class="time">N/A</div>
+								</div>
+								<div class="times dhuhr d-flex">
+									<div class="text">Dhuhr</div>
+									<div class="time">N/A</div>
+								</div>
+								<div class="times asr d-flex">
+									<div class="text">Asr</div>
+									<div class="time">N/A</div>
+								</div>
+								<div class="times maghrib d-flex">
+									<div class="text">Maghrib</div>
+									<div class="time">N/A</div>
+								</div>
+								<div class="times isha d-flex">
+									<div class="text">Isha</div>
+									<div class="time">N/A</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Path to Framework7 Library JS-->
+		<script type="text/javascript" src="js/framework7.min.js"></script>
+		<!-- Path to your app js-->
+		<script type="text/javascript" src="js/my-app.js"></script>
+		<script type="text/javascript" src="js/autocomplete.js"></script>
+	</body>
+</html>
