@@ -6,6 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"
 		/>
+		<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<title>My App</title>
@@ -68,7 +69,11 @@
 				<!-- Inner Page-->
 				<div class="pages navbar-through toolbar-through">
 					<div class="page" data-page="index">
-						<div class="page-content bg">
+						<div class="page-content bg root">
+							<div class="loading">
+								<img src="./img/favicon.png" alt="" />
+								<p>loading</p>
+							</div>
 							<div class="d-flex serach-form">
 								<div class="form-inner d-flex">
 									<div class="autocomplete item-input">
@@ -88,30 +93,35 @@
 									</a>
 								</div>
 							</div>
-							<div class="city-date d-flex">
-								<span class="city">N/A</span>
-								<span class="date">N/A</span>
-							</div>
-							<div class="result">
-								<div class="times fajr d-flex">
-									<div class="text">Fajr</div>
-									<div class="time">N/A</div>
+							<div class="wrapper">
+								<div class="preloader-wrapper">
+									<div class="preloader"></div>
 								</div>
-								<div class="times dhuhr d-flex">
-									<div class="text">Dhuhr</div>
-									<div class="time">N/A</div>
+								<div class="city-date d-flex">
+									<span class="city">N/A</span>
+									<span class="date">N/A</span>
 								</div>
-								<div class="times asr d-flex">
-									<div class="text">Asr</div>
-									<div class="time">N/A</div>
-								</div>
-								<div class="times maghrib d-flex">
-									<div class="text">Maghrib</div>
-									<div class="time">N/A</div>
-								</div>
-								<div class="times isha d-flex">
-									<div class="text">Isha</div>
-									<div class="time">N/A</div>
+								<div class="result">
+									<div class="times fajr d-flex">
+										<div class="text">Fajr</div>
+										<div class="time">N/A</div>
+									</div>
+									<div class="times dhuhr d-flex">
+										<div class="text">Dhuhr</div>
+										<div class="time">N/A</div>
+									</div>
+									<div class="times asr d-flex">
+										<div class="text">Asr</div>
+										<div class="time">N/A</div>
+									</div>
+									<div class="times maghrib d-flex">
+										<div class="text">Maghrib</div>
+										<div class="time">N/A</div>
+									</div>
+									<div class="times isha d-flex">
+										<div class="text">Isha</div>
+										<div class="time">N/A</div>
+									</div>
 								</div>
 							</div>
 						</div>

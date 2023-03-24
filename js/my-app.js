@@ -16,22 +16,18 @@ $$(document).on("pageInit", function (e) {
 	if (e.detail.page.name === "index") {
 		navigator.geolocation.getCurrentPosition(async (pos) => {
 			coords = { lat: pos.coords.latitude, lon: pos.coords.longitude };
-			const city = await CoordToCity(coords);
-			try {
-				const adhanData = await getAdhanTime(coords);
-				displayData(await adhanData.json(), city);
-			} catch (error) {
-				const time = setInterval(async () => {
-					const adhanData = await getAdhanTime(coords);
-					if (adhanData.ok == true) {
-						clearInterval(time);
-						displayData(await adhanData.json(), city);
-					}
-				}, 5000);
-			}
+			const cityName = await CoordToCity(coords);
+			handleFetchData(cityName, coords);
 		});
 
-		$$("#search-btn").on("click", handleClick);
+		$$("#search-btn").on("click", async function () {
+			handleInput();
+		});
+		$$("#search-input").on("keyup", async function (e) {
+			if (e.which == 13) {
+				handleInput();
+			}
+		});
 	}
 });
 
@@ -43,7 +39,6 @@ var mainView = myApp.addView(".view-main", {
 	dynamicNavbar: true,
 });
 
-//
 async function cityToCoord(city) {
 	const url = "https://geocode.maps.co/search?q=" + city;
 	var res = await fetch(url);
@@ -73,13 +68,11 @@ function displayData(adhanData, city) {
 	});
 	$$(".date").text(date.readable);
 	$$(".city").text(city);
+	$$(".preloader-wrapper").remove();
+	$$(".loading").remove();
 }
 
-async function handleClick() {
-	const cityName = $$("#search-input").val();
-	const { lon, lat } = await cityToCoord(cityName);
-	const coords = { lat, lon };
-
+async function handleFetchData(cityName, coords) {
 	try {
 		const adhanData = await getAdhanTime(coords);
 		displayData(await adhanData.json(), cityName);
@@ -92,4 +85,12 @@ async function handleClick() {
 			}
 		}, 5000);
 	}
+}
+
+async function handleInput() {
+	const preloader = `<div class="preloader-wrapper"><div class="preloader"></div></div>`;
+	$$(".wrapper").prepend(preloader);
+	const cityName = $$("#search-input").val();
+	coords = await cityToCoord(cityName);
+	handleFetchData(cityName, coords);
 }
