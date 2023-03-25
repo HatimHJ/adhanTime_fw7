@@ -114,15 +114,6 @@ input {
 .wrapper {
 	position: relative;
 }
-.preloader-wrapper {
-	position: absolute;
-	background: rgba(0.09 0.09 0.08 / 0.9);
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 
 .root {
 	position: relative;

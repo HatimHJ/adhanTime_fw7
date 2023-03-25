@@ -6,6 +6,11 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"
 		/>
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="upgrade-insecure-requests"
+		/>
+
 		<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -28,11 +33,11 @@
 		<div class="statusbar-overlay"></div>
 		<div class="panel-overlay"></div>
 
-		<div class="panel panel-left panel-cover">
+		<div class="panel panel-left panel-cover bg-gray">
 			<div class="content-block">
 				<div class="list-block">
 					<ul>
-						<li class="custom-panel-item">
+						<li class="custom-panel-item bg-gray color-white">
 							<div class="item-inner">
 								<div class="item-title">
 									<a href="about.html" class="item-link close-panel">about</a>
@@ -87,9 +92,6 @@
 								</div>
 							</div>
 							<div class="wrapper">
-								<div class="preloader-wrapper">
-									<div class="preloader"></div>
-								</div>
 								<div class="city-date d-flex">
 									<span class="city">N/A</span>
 									<span class="date">N/A</span>

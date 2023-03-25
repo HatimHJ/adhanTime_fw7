@@ -5,7 +5,7 @@ async function getAdhanTime(coords) {
 	const { lat, lon } = coords;
 	const year = new Date().getFullYear().toString();
 	const method = "4";
-	const baseUrl = "http://api.aladhan.com/v1/calendar";
+	const baseUrl = "https://api.aladhan.com/v1/calendar";
 	const url = `${baseUrl}/${year}?latitude=${lat}&longitude=${lon}&method=${method}`;
 	const res = await fetch(url);
 	console.log(res);
@@ -24,9 +24,7 @@ $$(document).on("pageInit", function (e) {
 			handleInput();
 		});
 		$$("#search-input").on("keyup", async function (e) {
-			if (e.which == 13) {
-				handleInput();
-			}
+			// todo
 		});
 	}
 });
@@ -68,7 +66,6 @@ function displayData(adhanData, city) {
 	});
 	$$(".date").text(date.readable);
 	$$(".city").text(city);
-	$$(".preloader-wrapper").remove();
 	$$(".loading").remove();
 }
 
@@ -88,7 +85,10 @@ async function handleFetchData(cityName, coords) {
 }
 
 async function handleInput() {
-	const preloader = `<div class="preloader-wrapper"><div class="preloader"></div></div>`;
+	const preloader = `<div class="loading">
+								<img src="./img/favicon-32x32.png" alt="" />
+								<p>loading</p>
+							</div>`;
 	$$(".wrapper").prepend(preloader);
 	const cityName = $$("#search-input").val();
 	coords = await cityToCoord(cityName);
