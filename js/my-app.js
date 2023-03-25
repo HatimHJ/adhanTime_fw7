@@ -14,11 +14,20 @@ async function getAdhanTime(coords) {
 
 $$(document).on("pageInit", function (e) {
 	if (e.detail.page.name === "index") {
-		navigator.geolocation.getCurrentPosition(async (pos) => {
-			coords = { lat: pos.coords.latitude, lon: pos.coords.longitude };
-			const cityName = await CoordToCity(coords);
-			handleFetchData(cityName, coords);
-		});
+		console.log(navigator.permissions);
+
+		navigator.geolocation.getCurrentPosition(
+			async (pos) => {
+				coords = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+				const cityName = await CoordToCity(coords);
+				handleFetchData(cityName, coords);
+			},
+			async () => {
+				coords = { lat: 21.51694, lon: 39.21917 };
+				const cityName = await CoordToCity(coords);
+				handleFetchData(cityName, coords);
+			}
+		);
 
 		$$("#search-btn").on("click", async function () {
 			handleInput();
