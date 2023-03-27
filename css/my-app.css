@@ -85,10 +85,9 @@ input {
 	color: #f0f0f0;
 	font-weight: bold;
 	font-size: 1.2rem;
-	padding-block: 1rem;
 }
 .city-date {
-	background-color: #343c3e;
+	background-color: #2f3640;
 	align-items: center;
 	justify-content: space-between;
 	font-weight: normal;
@@ -105,7 +104,11 @@ input {
 .times {
 	align-items: center;
 	justify-content: space-between;
-	margin: 0 1rem 1rem;
+	margin: 0 0rem 1rem;
+	padding: 0.5rem 1rem;
+}
+.next {
+	background: #218c74;
 }
 .times:last-child {
 	margin-bottom: 0rem;
