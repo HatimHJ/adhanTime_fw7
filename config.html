@@ -18,20 +18,83 @@
 </div>
 
 <div class="pages navbar-through toolbar-through">
-	<div class="page" data-page="about">
+	<div class="page" data-page="config">
 		<div class="page-content">
 			<!-- Content block -->
 			<div class="content-block">
-				<div class="method">
-					<label for="method"> method </label>
-					<input type="number" name="" id="method" />
+				<div class="content-block-title">Configeration</div>
+				<form id="my-form" class="list-block store-data">
+					<ul>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">
+										Method
+										<a
+											href="#"
+											class="open-popover"
+											data-popover=".method-detail"
+										>
+											<i class="ri-error-warning-line"></i>
+										</a>
+									</div>
+									<div class="item-input">
+										<input
+											type="number"
+											name="method"
+											value="4"
+											min="0"
+											placeholder="4"
+										/>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">Year</div>
+									<div class="item-input">
+										<input
+											type="text"
+											name="year"
+											value="2023"
+											placeholder="2023"
+										/>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</form>
+				<div class="content-block">
+					<a
+						href="#"
+						id="submit"
+						class="button bg-blue color-white form-to-data"
+						>Save</a
+					>
 				</div>
-				<div class="year">
-					<label for="year"> year </label>
-					<input type="text" name="" id="year" />
+				<div class="content-block">
+					<a
+						href="#"
+						id="reset"
+						class="button bg-orange color-white form-to-data"
+						>Reset</a
+					>
 				</div>
-				<div class="year">
-					<button id="submit">Submit</button>
+			</div>
+		</div>
+
+		<!-- Popover's method detail -->
+		<div class="popover method-detail">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>
+						accepts values from 0-12 and 99, for more info see
+						<a href="https://aladhan.com/prayer-times-api"> docs </a>
+					</p>
 				</div>
 			</div>
 		</div>
