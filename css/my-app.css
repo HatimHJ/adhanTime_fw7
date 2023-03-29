@@ -65,6 +65,9 @@ input {
 	top: 0;
 	left: 0;
 }
+.inner-content-p {
+	padding: 0.5rem;
+}
 /* main components */
 .popover {
 	width: 200px;
@@ -90,11 +93,23 @@ input {
 }
 /* result */
 .city-date,
-.result {
+.result,
+.remaining {
 	background: #2d3436b6;
 	color: #f0f0f0;
 	font-weight: bold;
 	font-size: 1.2rem;
+}
+.icon-text {
+	display: flex;
+	gap: 0.4rem;
+	align-items: center;
+}
+
+.remaining {
+	background: #273c75;
+	display: flex;
+	justify-content: space-evenly;
 }
 .city-date {
 	background-color: #475261;
@@ -106,10 +121,12 @@ input {
 }
 .city {
 	flex: 2;
+	margin-top: 2px;
 }
 .date {
 	flex: 1;
 	text-align: right;
+	margin-top: 2px;
 }
 .times {
 	align-items: center;

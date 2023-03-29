@@ -43,7 +43,6 @@ function counter(current, next) {
 		`${month}/${day}/${year} ${currentTime[0]}:${currentTime[1]}`
 	);
 	var dateE = new Date(`${month}/${day}/${year} ${nextTime[0]}:${nextTime[1]}`);
-
 	var diff = dateE.getTime() - dateS.getTime();
 	console.log(diff);
 	return diff;
@@ -51,11 +50,31 @@ function counter(current, next) {
 
 // not tested....
 function getNotification(interval) {
-	const end = setInterval(() => {
-		console.log("ggg");
+	console.log(interval);
+	remainingTime(interval);
+	setInterval(() => {
+		myApp.addNotification({
+			title: "adhanTime",
+			message: "It's adhan time",
+		});
 	}, interval);
+	let x = interval;
+	setInterval(() => {
+		remainingTime(x);
+		x -= 1000;
+	}, 1000);
 }
 
+function remainingTime(msec) {
+	var hh = Math.floor(msec / 1000 / 60 / 60);
+	msec -= hh * 1000 * 60 * 60;
+	var mm = Math.floor(msec / 1000 / 60);
+	msec -= mm * 1000 * 60;
+	var ss = Math.floor(msec / 1000);
+	msec -= ss * 1000;
+	// return { hh, mm, ss };
+	$$(".remaining-time").text(`${hh}:${mm}:${ss}`);
+}
 // config page
 myApp.onPageInit("config", () => {
 	$$("#submit").on("click", () => {
@@ -114,9 +133,8 @@ function convertTimeToNumber(time) {
 	return number;
 }
 
-// time should be as 21:21
 function getHrsAndMin(time) {
-	const sep = time.toString()[2]; //very risky
+	const sep = time.toString()[2]; //very risky [. || :]
 	let timeString = time.toString();
 	if (timeString.includes(" ")) timeString = timeString.split(" ")[0];
 
