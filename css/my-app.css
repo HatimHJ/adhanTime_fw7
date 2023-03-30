@@ -89,9 +89,14 @@ input {
 }
 .city-date,
 .serach-form {
-	margin-top: 2rem;
+	margin-top: 1rem;
 }
 /* result */
+.result {
+	border-block-width: 2px;
+	border-block-color: #fff;
+	border-block-style: solid;
+}
 .city-date,
 .result,
 .remaining {
@@ -100,6 +105,9 @@ input {
 	font-weight: bold;
 	font-size: 1.2rem;
 }
+.remaining > div {
+	padding: 0.5rem 1rem;
+}
 .icon-text {
 	display: flex;
 	gap: 0.4rem;
@@ -107,17 +115,17 @@ input {
 }
 
 .remaining {
-	background: #273c75;
+	/* background: #273c75; */
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 .city-date {
-	background-color: #475261;
+	/* background-color: #475261; */
 	align-items: center;
 	justify-content: space-between;
 	font-weight: normal;
 	font-size: 1rem;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 }
 .city {
 	flex: 2;
@@ -135,7 +143,8 @@ input {
 	padding: 0.5rem 1rem;
 }
 .next {
-	background: #2f3640;
+	background: #ffd966;
+	color: #000;
 }
 .times:last-child {
 	margin-bottom: 0rem;
