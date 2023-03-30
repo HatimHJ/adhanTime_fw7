@@ -8,12 +8,24 @@ function getNotification(interval) {
 	}, interval);
 }
 
+// iterval = time between to pryer  in ms
 function displayRemainingTime(interval) {
-	let delay = interval;
-
+	let time = interval;
 	intervalID = setInterval(() => {
-		remainingTime(delay);
-		delay -= 1000;
+		const { hh, mm, ss } = remainingTime(time);
+		$$(".remaining-time").text(`${hh}:${mm}:${ss}`);
+		time -= 1000;
+	}, 1000);
+}
+
+// iterval = current time in ms
+function displayCurrentTime() {
+	setInterval(() => {
+		let time = new Date();
+		let hh = time.getHours();
+		let mm = time.getMinutes();
+		let ss = time.getSeconds();
+		$$(".current-time").text(`${hh}:${mm}:${ss}`);
 	}, 1000);
 }
 
@@ -24,8 +36,8 @@ function remainingTime(msec) {
 	msec -= mm * 1000 * 60;
 	const ss = Math.floor(msec / 1000);
 	msec -= ss * 1000;
-	// return { hh, mm, ss };
-	$$(".remaining-time").text(`${hh}:${mm}:${ss}`);
+	return { hh, mm, ss };
+	// $$(".remaining-time").text(`${hh}:${mm}:${ss}`);
 }
 
 async function cityToCoord(city) {
@@ -109,15 +121,15 @@ function counter(current, next) {
 	const year = new Date().getFullYear();
 	const currentTime = getHrsAndMin(current);
 	const nextTime = getHrsAndMin(next);
-	const dateS = new Date(
+	const currnetMoment = new Date(
 		`${month}/${day}/${year} ${currentTime[0]}:${currentTime[1]}`
-	);
-	const dateE = new Date(
+	).getTime();
+	console.log(currnetMoment);
+	const nextPryer = new Date(
 		`${month}/${day}/${year} ${nextTime[0]}:${nextTime[1]}`
-	);
-	const inteval = dateE.getTime() - dateS.getTime();
-	// console.log(`counter : ${inteval}`);
-	return inteval;
+	).getTime();
+	const interval = nextPryer - currnetMoment;
+	return { currnetMoment, interval };
 }
 
 function manageData(adhanData) {
@@ -146,12 +158,17 @@ function displayData(adhanData, city) {
 	return { currentTime, next };
 }
 
+// time 12.43
+function getMsFromTime(time) {}
+
 async function printData(adhanData, cityName) {
-	// console.log(adhanData);
 	const { currentTime, next } = displayData(await adhanData.json(), cityName);
-	const interval = counter(currentTime, next);
+	const { interval, currnetMoment } = counter(currentTime, next);
+	console.log(currentTime);
 	getNotification(interval);
 	displayRemainingTime(interval);
+	console.log(currnetMoment);
+	displayCurrentTime(currnetMoment);
 }
 
 async function handleFetchData(coords, year, method, cityName) {
@@ -182,8 +199,6 @@ function preloading() {
 async function handleInput(year, method) {
 	const cityName = $$("#search-input").val();
 	coords = await cityToCoord(cityName);
-	console.log(coords);
-	console.log(cityName);
 	// clear interval...
 	handleFetchData(coords, year, method, cityName);
 }
