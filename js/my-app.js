@@ -1,22 +1,31 @@
 var $$ = Dom7;
 
-var intervalID;
+/* BUGS
+ * 1. remaining time break after asha
+ * 2. notifiction need to test
+ * 3. ~10s delay between current time & remaining time
+ * 4. 429 error handleing broke
+ */
 $$(document).on("pageInit", function (e) {
 	if (e.detail.page.name === "index") {
-		const { year, method } = getYearAndMethod();
+		// work flow no.1
+		const config = getConfig();
 		navigator.geolocation.getCurrentPosition(
-			(pos) => init(pos.coords.latitude, pos.coords.longitude, year, method),
-			() => init(21.51694, 39.21917, year, method)
+			(pos) => {
+				init(pos.coords.latitude, pos.coords.longitude, config);
+			},
+			() => {
+				init(21.51694, 39.21917, config);
+			}
 		);
-
-		$$("#search-btn").on("click", () => {
+		// work flow no.2
+		$$("#search-btn").on("click", async () => {
 			preloading();
 			if (intervalID) {
 				clearInterval(intervalID);
 			}
-			handleInput(year, method);
-			// const interval = counter(currentTime, next);
-			// getNotification(interval);
+			const { adhanData, cityName } = await handleInput(config);
+			controlFlow(adhanData, cityName);
 		});
 	}
 });
@@ -42,11 +51,22 @@ var mainView = myApp.addView(".view-main", {
 	dynamicNavbar: true,
 });
 
-async function init(lat, lon, year, method) {
+async function init(lat, lon, config) {
 	const coords = { lat, lon };
 	const cityName = await CoordToCity(coords);
-	handleFetchData(coords, year, method, cityName);
+	const adhanData = await handleFetchData(coords, config);
+	// the adhanData ready to use
+	controlFlow(adhanData, cityName);
+}
 
-	// const interval = counter(currentTime, next);
-	// getNotification(interval);
+function controlFlow(adhanData, cityName) {
+	const { date, pryerTime, next, currentTime } = manageData(adhanData);
+	const data = { date, pryerTime, next };
+	displayData(data, cityName);
+	const cTime = getHrsAndMin(currentTime);
+	const nextTime = getHrsAndMin(next);
+	const interval = counter(cTime, nextTime);
+	// const id = notificationSetup(interval);
+	displayRemainingTime(interval);
+	displayCurrentTime();
 }
